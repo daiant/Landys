@@ -1,5 +1,32 @@
 {
   "dependencies": {
     "canvas": "^2.8.0"
-  }
+  },
+  "name": "landys",
+  "description": "Randomized avatar generator for nodejs",
+  "version": "1.0.0",
+  "main": "generate.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daiant/Landys.git"
+  },
+  "keywords": [
+    "avatar",
+    "avatar",
+    "generator",
+    "random",
+    "landscape",
+    "website",
+    "application"
+  ],
+  "author": "daiant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daiant/Landys/issues"
+  },
+  "homepage": "https://github.com/daiant/Landys#readme"
 }
