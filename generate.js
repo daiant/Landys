@@ -35,8 +35,6 @@ const getPoints = (lower, upper, pixels) => {
     return array
 }
 
-
-
 const drawGround = (grass, dirt, dirt2) => {
     var ypos = parseInt(N*0.9)
     var xpos = 0;
@@ -49,17 +47,11 @@ const drawGround = (grass, dirt, dirt2) => {
         ctx.fillRect(xpos, ypos + height, width +1, 20)
         ctx.fillStyle = dirt2;
         ctx.fillRect(xpos, ypos + height + 20, width +1, N - ypos - height - 20)
-        
-
         xpos += width
     }
-
 }
-
 const drawMountain = (array, color) =>  {
-
     ctx.fillStyle = color
-
     for(var i = 0; i < array.length -1; i++) {
         var xpos = array[i].x / 100 * N
         var ypos = array[i].y
@@ -73,7 +65,6 @@ const drawMountain = (array, color) =>  {
         ctx.closePath()
         ctx.fill();
     }
-
 }
 const drawTransition = (heightSky, heightTransition, color1, color2) => {
     const widthPixel = 2;
@@ -91,21 +82,14 @@ const drawTransition = (heightSky, heightTransition, color1, color2) => {
     }
     return res;
 }
-
 const drawSky = (colors) => {
     var offSetY = 0;
-
-    
     ctx.fillStyle = colors[0]
     ctx.fillRect(0, 0, N, heightSky)
-    
     offSetY = drawTransition(heightSky, heightTransition, colors[0], colors[1])
-    
     ctx.fillStyle = colors[1]
     ctx.fillRect(0, heightSky + offSetY, N, heightSky)
-
     offSetY = offSetY + drawTransition(heightSky*2 + offSetY, heightTransition, colors[1], colors[2])
-
     ctx.fillStyle = colors[2]
     ctx.fillRect(0, heightSky*2 + offSetY, N, heightSky)
 }
@@ -114,12 +98,10 @@ const drawSun = () => {
     const outer_radius = 55
     const xpos = Math.floor(Math.random() * N)
     const ypos = Math.floor(Math.random() * N/2.5)
-
     ctx.fillStyle = '#FFF7B0'
     ctx.beginPath();
     ctx.arc(xpos, ypos, radius, 0, 2*Math.PI)
     ctx.fill();
-
     ctx.strokeStyle = "#FFF7B0"
     ctx.beginPath();
     ctx.arc(xpos, ypos, outer_radius, 0, 2*Math.PI)
@@ -127,12 +109,10 @@ const drawSun = () => {
     ctx.stroke();   
 }
 const drawCloud = (thicc) => {
-    
     const box = {width: 100, height: 15}
     const radius = Math.floor(Math.random() * (30 - 20) + 20)
     const ycloud = Math.floor(Math.random() * N/2)
     const xcloud = Math.floor(Math.random() * (N - 80) + 40)
-
     ctx.fillStyle = "#fff"
     for (var arc = 0; arc < thicc; arc++) {
         var ypos = Math.floor(Math.random() * box.height) + ycloud
@@ -149,7 +129,6 @@ const drawCloud = (thicc) => {
         ctx.beginPath();
         ctx.arc(xpos, ypos, radius, startAngle, endAngle, true)
         ctx.fill()
-
     }
 }
 
@@ -163,12 +142,10 @@ const drawStars = () => {
 }
 
 const draw = (biome, time) => {
-
     ctx.fillStyle = '#fff'
     ctx.fillRect(0, 0, width, height)
     drawSky(sky_colors[time])
     drawSun() 
-
     if(time=="day"){ 
         ctx.globalAlpha = 0.8
         for (var i = 0; i < Math.floor(Math.random() * (7)); i++) {
@@ -178,7 +155,6 @@ const draw = (biome, time) => {
     } else {
         drawStars()
     }
-
     var bound = 0
     for(var color of mountain_colors[biome]) {
         var lower_bound = 0.4 + bound
@@ -187,11 +163,7 @@ const draw = (biome, time) => {
         drawMountain(array, color)
         bound += 0.15
     }
-
     drawGround('#4FA447', '#92522E', '#A85731')
-    
-
-
 }
 
 const saveFile = (dirname, filename) => {
@@ -201,8 +173,6 @@ const saveFile = (dirname, filename) => {
     const stream = canvas.createPNGStream()
     stream.pipe(out)
 }
-
-
 
 exports.generateAvatar = function(dirname, filename) {
     draw(biome[Math.round(Math.random())],time[Math.round(Math.random())])
