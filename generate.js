@@ -201,8 +201,10 @@ const saveFile = (dirname, filename) => {
     const stream = canvas.createPNGStream()
     stream.pipe(out)
 }
-function generateAvatar(dirname, filename) {
+
+
+
+exports.generateAvatar = function(dirname, filename) {
     draw(biome[Math.round(Math.random())],time[Math.round(Math.random())])
     saveFile(dirname, filename)
 }
-generateAvatar("./", "test.png")
