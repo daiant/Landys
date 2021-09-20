@@ -169,7 +169,9 @@ const draw = (biome, time) => {
 const saveFile = (dirname, filename) => {
     const fs = require('fs')
     const path = require('path')
-    const out = fs.createWriteStream(path.join(dirname, filename));
+
+    const out = fs.createWriteStream(`${dirname}/${filename}`);
+    
     const stream = canvas.createPNGStream()
     stream.pipe(out)
 }
@@ -177,4 +179,5 @@ const saveFile = (dirname, filename) => {
 exports.generateAvatar = function(dirname, filename) {
     draw(biome[Math.round(Math.random())],time[Math.round(Math.random())])
     saveFile(dirname, filename)
+    return `${dirname}/${filename}`
 }

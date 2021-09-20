@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "canvas": "^2.8.0"
+    "canvas": "^2.8.0",
+    "landys": "^1.0.1"
   },
   "name": "landys",
   "description": "Randomized avatar generator for nodejs",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "main": "generate.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
