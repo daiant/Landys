@@ -17,22 +17,22 @@ const biome = ['green', 'desert']
 
 // [[{x, y}, {x, y}]]
 const getPoints = (lower, upper, pixels) => {
-    var array = []
+    var res = []
     for(var i = 0; i <= 100; i++) {
         if(i % 5 == 0) {
             let min_range, max_range;
-            if(array.length > 0) {
-                min_range = Math.max(array.at(-1).y - variation, pixels * lower)
-                max_range = Math.min(array.at(-1).y + variation, pixels * upper)
+            if(res.length > 0) {
+                min_range = Math.max(res[res.length -1].y - variation, pixels * lower)
+                max_range = Math.min(res[res.length -1].y + variation, pixels * upper)
             } else {
                 min_range = pixels * lower
                 max_range = pixels * upper
             }
             let ypos = Math.floor(Math.random() * (max_range - min_range) + min_range);
-            array.push({x: i, y: ypos})
+            res.push({x: i, y: ypos})
         }
     }
-    return array
+    return res
 }
 
 const drawGround = (grass, dirt, dirt2) => {
